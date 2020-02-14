@@ -27,5 +27,3 @@ fi
 hh_client
 
 vendor/bin/hacktest tests/
-
-vendor/bin/hhast-lint
