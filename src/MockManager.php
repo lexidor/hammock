@@ -178,8 +178,10 @@ class MockManager {
 
 		self::unmock($mockKey);
 
-		self::$classMethodMocks =
-			Dict\filter_keys(self::$classMethodMocks, ($key) ==> $key !== $mockKey);
+		self::$classMethodMocks = Dict\filter_keys(
+			self::$classMethodMocks,
+			($key) ==> $key !== $mockKey,
+		);
 	}
 
 	public static function unmockGlobalFunction(
@@ -329,26 +331,16 @@ class MockManager {
 		string $mockKey,
 		self::InternalMockCallback $callback,
 	): void {
-		/* HH_FIXME[2049] This function is not in any hhi */
-		/* HH_FIXME[4107] This function is not in any hhi */
-		\fb_intercept(
+		\__Private\fb_intercept_full(
 			$mockKey,
 			function(
 				string $_,
 				mixed $objectOrString,
-				array<mixed> $args,
-				self::InternalMockCallback $cb,
-				/* HH_IGNORE_ERROR[1002] */
-				/* HH_FIXME[2087] Don't use references!*/
-				bool &$done,
+				varray<mixed> $args,
+				mixed $cb,
+				\__Private\Ref<bool> $done,
 			): mixed {
-				// NOTE: The following 3 ignores should be unnecessary, but the
-				// type-checker trips out because of the last `&$done` parameter.
-				// Removing the comma after `&$done` fixes the issue, but then
-				// `hackfmt` automatically re-adds the comma and breaks it again.
 
-				// TODO: Use `$object is string`.
-				/* HH_IGNORE_ERROR[2050] */
 				$object = \is_string($objectOrString) ? null : $objectOrString;
 				$previousObject = self::$currentObject;
 
@@ -357,6 +349,7 @@ class MockManager {
 
 					/* HH_IGNORE_ERROR[2050] */
 					/* HH_IGNORE_ERROR[4084] */
+					/* HH_IGNORE_ERROR[4009] */
 					return vec($args) |> $cb($object, $$);
 				} catch (PassThroughException $e) {
 					// Pass through to the original, unmocked behavior.
@@ -371,9 +364,7 @@ class MockManager {
 	}
 
 	protected static function unmock(string $mockKey): void {
-		/* HH_FIXME[2049] This function is not in any hhi. */
-		/* HH_FIXME[4107] This function is not in any hhi. */
-		\fb_intercept($mockKey, null);
+		\__Private\fb_intercept_zero($mockKey, null);
 	}
 
 	protected static function hashObject<T>(T $object): string {
@@ -432,7 +423,10 @@ class MockManager {
 
 		// NOTE: When mocking/unmocking object methods, we don't care that
 		// the object's class is the declaring class for the input method.
-		return
-			self::getFullyQualifiedClassMethodName($className, $methodName, false);
+		return self::getFullyQualifiedClassMethodName(
+			$className,
+			$methodName,
+			false,
+		);
 	}
 }
