@@ -44,10 +44,13 @@ function fb_intercept_four(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2(
 			$name,
 			(string $name, mixed $obj_or_classname, inout varray<mixed> $params) ==>
@@ -61,10 +64,13 @@ function fb_intercept_three(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2(
 			$name,
 			(string $name, mixed $obj_or_classname, inout varray<mixed> $params) ==>
@@ -79,10 +85,13 @@ function fb_intercept_two(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2(
 			$name,
 			(string $name, mixed $obj_or_classname, inout varray<mixed> $_) ==>
@@ -97,10 +106,13 @@ function fb_intercept_one(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2(
 			$name,
 			(string $name, mixed $_, inout varray<mixed> $_) ==>
@@ -115,10 +127,13 @@ function fb_intercept_zero(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2(
 			$name,
 			(string $a, mixed $_, inout varray<mixed> $_) ==>
