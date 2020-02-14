@@ -18,7 +18,7 @@ else
 fi
 
 use_polyfill=$(hhvm --php -r "echo HHVM_VERSION_ID < 42600 ? 'old' : 'new';")
-if [ "$use_polyfill" = "old"]; then
+if [ "$use_polyfill" = "old" ]; then
   rm src/__Private/fb_intercept_polyfill_new.php
 else
   rm src/__Private/fb_intercept_polyfill_old.php
