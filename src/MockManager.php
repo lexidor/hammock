@@ -353,7 +353,7 @@ class MockManager {
 					return vec($args) |> $cb($object, $$);
 				} catch (PassThroughException $e) {
 					// Pass through to the original, unmocked behavior.
-					$done = false;
+					$done->value = false;
 					return null;
 				} finally {
 					self::$currentObject = $previousObject;
