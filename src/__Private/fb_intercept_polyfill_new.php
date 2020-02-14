@@ -15,10 +15,13 @@ function fb_intercept_full(
 	mixed $data = null,
 ): bool {
 	if ($handler === null || $handler === '') {
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, null);
 	} else {
 		invariant($name !== '', 'Using the catch-all intercept is not supported');
-
+		/*HH_IGNORE_ERROR[2049] no hhi*/
+    /*HH_IGNORE_ERROR[4107] no hhi*/
 		return \fb_intercept2($name, (
 			string $name,
 			mixed $obj_or_classname,
